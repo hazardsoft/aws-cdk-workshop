@@ -6,6 +6,7 @@ Differences are:
 2. In order for lambda functions to be picked up correctly they are transpiled into files with `*.mjs` extension
 3. `NodeJSFunction` is NOT used, common `Function` of `aws-cdk-lib/aws-lambda` is used instead, the reason is that `NodeJSFunction` uses ESBuild under the hood to transpile each lambda function and requires ESBuild config at the place, I prefer common way of defining ESBuild options (e.g. in `esbuild.config.js` file)
 4. `Vitest` used instead of `Jest` (typings out-of-the-box, HMR with `watch` option)
+5. `AWS SDK` is updated to v3 (modularized approach is used in `src/lambdas/hitcounter.ts`)
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
