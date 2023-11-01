@@ -1,10 +1,11 @@
 import { IFunction, Function, Runtime, Code } from "aws-cdk-lib/aws-lambda";
-import { Table, AttributeType } from "aws-cdk-lib/aws-dynamodb";
+import { Table, AttributeType, TableEncryption } from "aws-cdk-lib/aws-dynamodb";
 import { RemovalPolicy } from "aws-cdk-lib";
 import { Construct } from "constructs";
 
 interface HitCounterProps {
     downstream: IFunction;
+    readCapacity?: number;
 }
 
 export class HitCounter extends Construct {
@@ -12,6 +13,13 @@ export class HitCounter extends Construct {
     public readonly table: Table;
 
     constructor(scope: Construct, id: string, props: HitCounterProps) {
+        if (
+            props.readCapacity !== undefined &&
+            (props.readCapacity < 5 || props.readCapacity > 20)
+        ) {
+            throw new Error("Read capacity must be between 5 and 20");
+        }
+
         super(scope, id);
 
         this.table = new Table(this, "Hits", {
@@ -20,6 +28,8 @@ export class HitCounter extends Construct {
                 type: AttributeType.STRING,
             },
             removalPolicy: RemovalPolicy.DESTROY,
+            encryption: TableEncryption.AWS_MANAGED,
+            readCapacity: props.readCapacity ?? 5,
         });
 
         this.handler = new Function(this, "HitCounterHandler", {
