@@ -21,7 +21,17 @@ export class CDKPipelineStack extends Stack {
             })
         })
 
-        const stage = new CDKPipelineStage(this, "Stage1");
-        pipeline.addStage(stage);
+        const deploy = new CDKPipelineStage(this, "Stage1");
+        const deployStage = pipeline.addStage(deploy);
+
+        deployStage.addPost(
+            new CodeBuildStep("TestGatewayEndpoint", {
+                projectName: "TestGatewayEndpoint",
+                envFromCfnOutputs: {
+                    ENDPOINT_URL: deploy.gateWayUrlOutput
+                },
+                commands: ["curl -Ssf $ENDPOINT_URL", "curl -Ssf $ENDPOINT_URL/hello", "curl -Ssf $ENDPOINT_URL/users"]
+            })
+        )
     }
 }
