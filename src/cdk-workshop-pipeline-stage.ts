@@ -6,6 +6,6 @@ export class CDKPipelineStage extends Stage {
     constructor(scope: Construct, id: string) {
         super(scope, id);
 
-        const stack = new CdkWorkshopStack(scope, "CDKWorkshopStack");
+        new CdkWorkshopStack(scope, "CDKWorkshopStack");
     }
 }
