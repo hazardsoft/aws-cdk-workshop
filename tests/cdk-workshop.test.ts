@@ -1,15 +1,15 @@
-import * as cdk from "aws-cdk-lib";
+import { App, Stack } from "aws-cdk-lib";
 import { Capture, Template } from "aws-cdk-lib/assertions";
-import * as CdkWorkshop from "../src/cdk-workshop-stack";
 import { beforeAll, expect, test } from "vitest";
-import { Hello } from "../src/constructs/hello";
-import { HitCounter } from "../src/constructs/hitcounter";
+import { CdkWorkshopStack } from "@/cdk-workshop-stack";
+import { Hello } from "@/constructs/hello";
+import { HitCounter } from "@/constructs/hitcounter";
 
-let appStack: cdk.Stack;
+let appStack: Stack;
 let appTemplate: Template;
 
 beforeAll(async () => {
-    appStack = new CdkWorkshop.CdkWorkshopStack(new cdk.App(), "MyTestStack");
+    appStack = new CdkWorkshopStack(new App(), "MyTestStack");
     appTemplate = Template.fromStack(appStack);
 });
 
@@ -57,7 +57,7 @@ test("DynamoDB is created with encryption", () => {
 });
 
 test("Read capacity is in range 5-20", () => {
-    const stack = new cdk.Stack();
+    const stack = new Stack();
     const hello = new Hello(stack, "HelloTest");
     expect(() => {
         new HitCounter(stack, "HitCounterTest", {
