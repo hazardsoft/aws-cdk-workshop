@@ -1,16 +1,16 @@
-import { Construct } from "constructs";
-import { Function, Runtime, Code } from "aws-cdk-lib/aws-lambda";
+import { Construct } from 'constructs'
+import { Function as LambdaFunction, Runtime, Code } from 'aws-cdk-lib/aws-lambda'
 
 export class Hello extends Construct {
-    public readonly handler: Function;
+  public readonly handler: LambdaFunction
 
-    constructor(scope: Construct, id: string) {
-        super(scope, id);
+  constructor(scope: Construct, id: string) {
+    super(scope, id)
 
-        this.handler = new Function(this, "HelloHandler", {
-            runtime: Runtime.NODEJS_20_X,
-            code: Code.fromAsset("dist/lambdas/hello"),
-            handler: "hello.handler",
-        });
-    }
+    this.handler = new LambdaFunction(this, 'HelloHandler', {
+      runtime: Runtime.NODEJS_20_X,
+      code: Code.fromAsset('dist/lambdas/hello'),
+      handler: 'hello.handler'
+    })
+  }
 }
