@@ -33,7 +33,7 @@ export class HitCounter extends Construct {
         });
 
         this.handler = new Function(this, "HitCounterHandler", {
-            runtime: Runtime.NODEJS_18_X,
+            runtime: Runtime.NODEJS_20_X,
             code: Code.fromAsset("dist/lambdas/hitcounter"),
             handler: "hitcounter.handler",
             environment: {

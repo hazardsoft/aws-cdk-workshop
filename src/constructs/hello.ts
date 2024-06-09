@@ -8,7 +8,7 @@ export class Hello extends Construct {
         super(scope, id);
 
         this.handler = new Function(this, "HelloHandler", {
-            runtime: Runtime.NODEJS_18_X,
+            runtime: Runtime.NODEJS_20_X,
             code: Code.fromAsset("dist/lambdas/hello"),
             handler: "hello.handler",
         });
