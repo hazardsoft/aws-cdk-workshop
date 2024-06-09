@@ -6,11 +6,13 @@ export default defineConfig({
     include: 'tests/**.test.ts',
     threads: false,
     environment: 'node',
-    globals: false
+    globals: false,
+    watch: false
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      cdk: fileURLToPath(new URL('./cdk', import.meta.url))
     }
   }
 })
