@@ -10,8 +10,8 @@ const options = {
 }
 
 await esbuild.build({
-  entryPoints: ['src/cdk-workshop.ts'],
-  outdir: 'dist',
+  entryPoints: ['cdk/cdk-workshop.ts'],
+  outdir: 'cdk.out',
   ...options
 })
 await esbuild.build({

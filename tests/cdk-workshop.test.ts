@@ -1,9 +1,9 @@
 import { App, Stack } from 'aws-cdk-lib'
 import { Capture, Template } from 'aws-cdk-lib/assertions'
 import { beforeAll, expect, test } from 'vitest'
-import { CdkWorkshopStack } from '@/cdk-workshop-stack'
-import { Hello } from '@/constructs/hello'
-import { HitCounter } from '@/constructs/hitcounter'
+import { CdkWorkshopStack } from 'cdk/cdk-workshop-stack.js'
+import { Hello } from 'cdk/constructs/hello.js'
+import { HitCounter } from 'cdk/constructs/hitcounter.js'
 
 let appStack: Stack
 let appTemplate: Template
