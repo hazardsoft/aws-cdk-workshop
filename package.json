@@ -7,7 +7,7 @@
     "format": "prettier --write .",
     "prebuild": "rm -rf dist",
     "build": "node esbuild.config.js",
-    "start": "node dist/cdk-workshop.js",
+    "start": "node cdk.out/cdk-workshop.js",
     "test": "vitest",
     "cdk": "cdk"
   },
