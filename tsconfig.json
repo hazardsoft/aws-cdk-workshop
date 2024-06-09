@@ -1,12 +1,14 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "Bundler",
-        "declaration": false,
-        "sourceMap": false,
-        "strict": true,
-        "outDir": "dist"
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
     },
-    "include": ["src"]
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
 }
