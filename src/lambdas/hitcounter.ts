@@ -1,8 +1,8 @@
 import { DynamoDBClient, UpdateItemCommand } from '@aws-sdk/client-dynamodb'
 import { LambdaClient, InvokeCommand } from '@aws-sdk/client-lambda'
-import { APIGatewayEvent } from 'aws-lambda'
+import type { APIGatewayEvent } from 'aws-lambda'
 
-export const handler = async function (event: APIGatewayEvent): Promise<string> {
+export const handler = async (event: APIGatewayEvent): Promise<string> => {
   console.log('event type:', event.constructor.name)
   console.log('request:', JSON.stringify(event, undefined, 2))
 

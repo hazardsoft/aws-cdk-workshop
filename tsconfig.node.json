@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.app.json",
-  "include": ["vitest.config.js", "eslint.config.js"],
+  "include": ["vitest.config.js"],
   "exclude": [],
   "compilerOptions": {
     "composite": true,

@@ -1,6 +1,6 @@
 import { Stack, type StackProps } from 'aws-cdk-lib'
 import { LambdaRestApi } from 'aws-cdk-lib/aws-apigateway'
-import { Construct } from 'constructs'
+import type { Construct } from 'constructs'
 import { HitCounter } from './constructs/hitcounter.js'
 import { Hello } from './constructs/hello.js'
 
