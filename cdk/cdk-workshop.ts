@@ -2,5 +2,5 @@
 import { App } from 'aws-cdk-lib'
 import { CdkWorkshopStack } from './cdk-workshop-stack.js'
 
-const app = new App()
-new CdkWorkshopStack(app, 'CdkWorkshopStack')
+const workshopStack = new CdkWorkshopStack(new App(), 'CdkWorkshopStack')
+export { workshopStack }
